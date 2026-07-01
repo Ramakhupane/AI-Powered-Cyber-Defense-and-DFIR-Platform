@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "JetBrains Mono", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "JetBrains Mono", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --color-primary: oklch(0.8686 0.2776 144.47);
+  --color-on-primary: oklch(0.2077 0.0398 265.75);
+  --color-secondary: oklch(0.1591 0 0);
+  --color-accent: oklch(0.6489 0.237 26.97);
+  --color-background: oklch(0.0 0 0);
+  --color-foreground: oklch(0.9067 0 0);
+  --color-muted: oklch(0.209 0 0);
+  --color-border: oklch(0.2393 0 0);
+  --color-destructive: oklch(0.6368 0.2078 25.33);
+  --color-ring: oklch(0.8686 0.2776 144.47);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Custom scrollbar for cyber theme */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Glow utility */
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.3), 0 0 30px rgba(6, 182, 212, 0.1);
+}
+
+.glow-red {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3), 0 0 30px rgba(239, 68, 68, 0.1);
+}
+
+.glow-green {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3), 0 0 30px rgba(16, 185, 129, 0.1);
+}
+
+/* Animated gradient border */
+.border-glow {
+  position: relative;
+}
+.border-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(6,182,212,0.4), transparent, rgba(6,182,212,0.1));
+  z-index: -1;
+}
+
+/* Scanline effect for terminal feel */
+.terminal-text::before {
+  content: '> ';
+  color: var(--color-primary);
+}
+
+/* Loading pulse animation */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+/* Print styles */
+@media print {
+  body { background: white !important; color: black !important; }
+  .print\:hidden { display: none !important; }
+}
